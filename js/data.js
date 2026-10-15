@@ -23,6 +23,9 @@ window.SITE_DATA = {
   graduation: {
     // PLACEHOLDER — replace with the official date & time once announced.
     datetime: "2027-05-28T18:00",
+    // Shown instead of the time from `datetime`. Delete this line once the
+    // official time is set (the countdown still uses the time above).
+    timeLabel: "TBA",
     location: "Fond du Lac Ojibwe School",
     address: "49 University Rd, Cloquet, MN 55720",
     verify: true,

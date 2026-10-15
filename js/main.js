@@ -47,7 +47,8 @@
   const grad = data.graduation;
   const gradDate = parseDate(grad.datetime);
   $("[data-grad-date]").textContent = fmtDate(gradDate);
-  $("[data-grad-time]").textContent = fmtTime(gradDate);
+  const gradTime = grad.timeLabel || fmtTime(gradDate);
+  $("[data-grad-time]").textContent = gradTime;
   $("[data-grad-location]").textContent = grad.location;
   $("[data-grad-address]").textContent = grad.address || "";
   $("[data-grad-verify]").hidden = !grad.verify;
@@ -86,7 +87,7 @@
       title: "Graduation Day 🎓",
       category: "school",
       when: gradDate,
-      description: `${grad.location} · ${fmtTime(gradDate)}`,
+      description: `${grad.location} · Time ${gradTime}`,
       verify: grad.verify,
     }])
     .sort((a, b) => a.when - b.when);
