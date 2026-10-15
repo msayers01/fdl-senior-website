@@ -270,7 +270,7 @@ window.SITE_DATA = {
       { title: "Start early, write ugly", body: "Your first draft is supposed to be messy. Get ideas down, then shape them over a few weeks." },
       { title: "Tell a story only you can tell", body: "Pick one specific moment — a conversation, a challenge, a tradition — and show what it taught you." },
       { title: "Show, don't tell", body: "Instead of “I'm hardworking,” describe the 5 a.m. practice or the shift you worked before school." },
-      { title: "Your culture & community count", body: "Family, language, ricing, powwow, helping elders — if it shaped you, it's worth writing about. Share only what you're comfortable sharing." },
+      { title: "Your culture & community count", body: "Share how your culture has shaped who you are." },
       { title: "Answer the prompt", body: "Re-read the question before and after you write. Every paragraph should connect back to it." },
       { title: "Get a second (and third) reader", body: "Ask a teacher, counselor or family member to read it. Then read it out loud yourself." },
       { title: "Mind the word limit", body: "Common App essays max out at 650 words. Cut filler words so your story has room." },
