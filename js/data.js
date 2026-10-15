@@ -296,6 +296,6 @@ window.SITE_DATA = {
   ],
 
   contact: {
-    note: "Questions? Stop by the counseling office or talk with your senior advisor.",
+    note: "Questions? Contact senior advisor",
   },
 };
