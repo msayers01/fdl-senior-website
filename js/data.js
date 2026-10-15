@@ -28,7 +28,6 @@ window.SITE_DATA = {
     timeLabel: "TBA",
     location: "Fond du Lac Ojibwe School",
     address: "49 University Rd, Cloquet, MN 55720",
-    verify: true,
   },
 
   /*
@@ -193,7 +192,7 @@ window.SITE_DATA = {
       deadline: "Check with the Education Division",
       eligibility: "Enrolled Fond du Lac Band members. Other students: contact your own tribe's education office.",
       howTo: "Ask your counselor or contact the FDL Education Division for the current application.",
-      link: "https://www.fdlrez.com",
+      link: "https://www.fdlband.org/community/scholarships/index.php",
     },
   ],
 
