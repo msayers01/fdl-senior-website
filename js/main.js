@@ -41,7 +41,6 @@
   /* ---------- School info ---------- */
   $$("[data-class-year]").forEach((n) => (n.textContent = data.school.classYear));
   $$("[data-school-name]").forEach((n) => (n.textContent = data.school.name));
-  $$("[data-tagline]").forEach((n) => (n.textContent = data.school.tagline));
   document.title = `FDL Class of ${data.school.classYear}`;
 
   /* ---------- Graduation + countdown ---------- */
@@ -52,8 +51,6 @@
   $("[data-grad-location]").textContent = grad.location;
   $("[data-grad-address]").textContent = grad.address || "";
   $("[data-grad-verify]").hidden = !grad.verify;
-  const notes = $("[data-grad-notes]");
-  (grad.notes || []).forEach((n) => notes.append(el("li", { text: n })));
 
   const cd = {
     days: $('[data-cd="days"]'),
@@ -203,7 +200,6 @@
   f.steps.forEach((s) => steps.append(el("li", { text: s })));
   $("[data-fafsa-apply]").href = f.applyLink;
   $("[data-fafsa-fsaid]").href = f.fsaIdLink;
-  $("[data-fafsa-dream]").href = f.dreamActLink;
 
   /* ---------- Scholarships ---------- */
   const schGrid = $("[data-scholarships]");
@@ -232,6 +228,7 @@
         el("div", { class: "college-top" }, [
           el("p", { class: "college-type", text: c.type }),
           c.promise ? el("span", { class: "tag tag-promise", text: "Promise" }) : null,
+          c.waiver ? el("span", { class: "tag tag-promise", text: "Tuition Waiver" }) : null,
         ]),
         el("h3", { text: c.name }),
         el("p", { class: "college-loc", text: c.location }),

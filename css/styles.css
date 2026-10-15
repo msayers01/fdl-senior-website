@@ -157,7 +157,6 @@ p { margin: 0; }
 .hero-inner { padding: 72px 0 80px; }
 .hero h1 { font-size: clamp(2.6rem, 8vw, 5rem); font-weight: 800; letter-spacing: -0.02em; margin: 6px 0 10px; }
 .gold { color: var(--gold-500); }
-.hero-sub { color: #c9d6f5; font-size: 1.1rem; }
 .eyebrow {
   font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-500);
 }
@@ -191,8 +190,6 @@ p { margin: 0; }
 .grad-value { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; }
 .grad-sub { font-size: 0.85rem; color: var(--ink-soft); }
 .grad-verify { margin-top: 14px; font-size: 0.88rem; color: #c9d6f5; font-style: italic; }
-.grad-notes { list-style: none; padding: 0; margin: 14px auto 0; max-width: 640px; color: #dbe6ff; font-size: 0.93rem; }
-.grad-notes li + li { margin-top: 4px; }
 
 .hero-stripe {
   height: 10px;

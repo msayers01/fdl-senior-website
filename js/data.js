@@ -18,7 +18,6 @@ window.SITE_DATA = {
   school: {
     name: "Fond du Lac Ojibwe School",
     classYear: 2027,
-    tagline: "One hub for our seniors, families, and staff.",
   },
 
   graduation: {
@@ -27,10 +26,6 @@ window.SITE_DATA = {
     location: "Fond du Lac Ojibwe School",
     address: "49 University Rd, Cloquet, MN 55720",
     verify: true,
-    notes: [
-      "Seniors: arrive early for line-up — exact time will be announced.",
-      "Cap & gown details will be shared by the senior advisors.",
-    ],
   },
 
   /*
@@ -130,7 +125,6 @@ window.SITE_DATA = {
   fafsa: {
     applyLink: "https://studentaid.gov/h/apply-for-aid/fafsa",
     fsaIdLink: "https://studentaid.gov/fsa-id/create-account/launch",
-    dreamActLink: "https://www.ohe.state.mn.us/mPg.cfm?pageID=2297",
     steps: [
       "Create your StudentAid.gov account (FSA ID). A parent/contributor needs one too.",
       "Gather your Social Security number, 2025 tax information, and any tribal enrollment info.",
@@ -148,7 +142,7 @@ window.SITE_DATA = {
       amount: "Up to $4,000 / year (undergraduate)",
       deadline: "Priority: July 1 · accepted year-round",
       eligibility: "Minnesota residents of American Indian ancestry (tribal enrollment or descendancy) attending an eligible MN college. See OHE for full rules.",
-      howTo: "Complete the FAFSA (or MN Dream Act), then apply through the MNAid student portal.",
+      howTo: "Complete the FAFSA, then apply through the MNAid student portal.",
       link: "https://ohe.mn.gov",
     },
     {
@@ -177,7 +171,7 @@ window.SITE_DATA = {
       amount: "Based on need",
       deadline: "Within 30 days of the start of your term",
       eligibility: "Minnesota residents attending an eligible MN college.",
-      howTo: "Automatically considered when you file the FAFSA or MN Dream Act.",
+      howTo: "Automatically considered when you file the FAFSA.",
       link: "https://ohe.mn.gov",
     },
     {
@@ -186,7 +180,7 @@ window.SITE_DATA = {
       amount: "Covers remaining tuition & fees",
       deadline: "File FAFSA early",
       eligibility: "Minnesota residents with family income under $80,000 attending a MN public college or Tribal college.",
-      howTo: "Automatically considered when you file the FAFSA or MN Dream Act.",
+      howTo: "Automatically considered when you file the FAFSA.",
       link: "https://ohe.mn.gov",
     },
     {
@@ -223,6 +217,14 @@ window.SITE_DATA = {
       deadline: "Nov 1 · Dec 1 · Jan 1",
       promise: true,
       link: "https://admissions.tc.umn.edu",
+    },
+    {
+      name: "University of Minnesota Morris",
+      location: "Morris, MN",
+      type: "4-year public liberal arts college",
+      deadline: "See website",
+      waiver: true,
+      link: "https://morris.umn.edu",
     },
     {
       name: "Lake Superior College",
