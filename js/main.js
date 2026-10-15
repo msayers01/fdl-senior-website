@@ -51,7 +51,6 @@
   $("[data-grad-time]").textContent = gradTime;
   $("[data-grad-location]").textContent = grad.location;
   $("[data-grad-address]").textContent = grad.address || "";
-  $("[data-grad-verify]").hidden = !grad.verify;
 
   const cd = {
     days: $('[data-cd="days"]'),
@@ -88,7 +87,6 @@
       category: "school",
       when: gradDate,
       description: `${grad.location} · Time ${gradTime}`,
-      verify: grad.verify,
     }])
     .sort((a, b) => a.when - b.when);
 
