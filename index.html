@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FDL Class of 2027</title>
+  <meta name="description" content="The all-in-one hub for Fond du Lac Ojibwe School seniors, families, and staff: graduation countdown, deadlines, FAFSA, scholarships, college applications, and senior quotes.">
+  <meta name="theme-color" content="#0b3d91">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b3d91'/%3E%3Cpath d='M32 14 6 26l26 12 26-12z' fill='%23f2b705'/%3E%3Cpath d='M16 31v10c0 4 7 8 16 8s16-4 16-8V31l-16 7z' fill='%23f2b705'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">FDL</span>
+        <span class="brand-text">Class of <span data-class-year>2027</span></span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Menu</span>
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <a href="#deadlines">Deadlines</a>
+        <a href="#fafsa">FAFSA</a>
+        <a href="#scholarships">Scholarships</a>
+        <a href="#promise">UMN Promise</a>
+        <a href="#colleges">Colleges</a>
+        <a href="#essays">Essays</a>
+        <a href="#quotes">Quotes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO / COUNTDOWN -->
+    <section class="hero" id="top">
+      <div class="container hero-inner">
+        <p class="eyebrow" data-school-name>Fond du Lac Ojibwe School</p>
+        <h1>Class of <span class="gold" data-class-year>2027</span></h1>
+        <p class="hero-sub" data-tagline>One hub for our seniors, families, and staff.</p>
+
+        <div class="countdown" role="timer" aria-live="off" aria-label="Countdown to graduation">
+          <div class="cd-unit"><span class="cd-num" data-cd="days">--</span><span class="cd-label">Days</span></div>
+          <div class="cd-unit"><span class="cd-num" data-cd="hours">--</span><span class="cd-label">Hours</span></div>
+          <div class="cd-unit"><span class="cd-num" data-cd="minutes">--</span><span class="cd-label">Minutes</span></div>
+          <div class="cd-unit"><span class="cd-num" data-cd="seconds">--</span><span class="cd-label">Seconds</span></div>
+        </div>
+        <p class="cd-done" hidden>Congratulations, graduates! 🎓</p>
+
+        <div class="grad-card">
+          <div class="grad-item">
+            <span class="grad-label">Date</span>
+            <span class="grad-value" data-grad-date>—</span>
+          </div>
+          <div class="grad-item">
+            <span class="grad-label">Time</span>
+            <span class="grad-value" data-grad-time>—</span>
+          </div>
+          <div class="grad-item">
+            <span class="grad-label">Location</span>
+            <span class="grad-value" data-grad-location>—</span>
+            <span class="grad-sub" data-grad-address></span>
+          </div>
+        </div>
+        <p class="grad-verify" data-grad-verify hidden>Date shown is tentative — official date and time will be confirmed by the school.</p>
+        <ul class="grad-notes" data-grad-notes></ul>
+      </div>
+      <div class="hero-stripe" aria-hidden="true"></div>
+    </section>
+
+    <!-- DEADLINES -->
+    <section class="section" id="deadlines">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Stay on track</p>
+          <h2>Deadline Board</h2>
+          <p class="section-sub">Every important date in one place. Sorted soonest first.</p>
+        </div>
+
+        <div class="next-up" data-next-up></div>
+
+        <div class="filter-bar" role="group" aria-label="Filter deadlines">
+          <button class="chip is-active" data-filter="all" aria-pressed="true">All</button>
+          <button class="chip" data-filter="fafsa" aria-pressed="false">FAFSA</button>
+          <button class="chip" data-filter="scholarship" aria-pressed="false">Scholarships</button>
+          <button class="chip" data-filter="college" aria-pressed="false">College Apps</button>
+          <label class="toggle">
+            <input type="checkbox" data-show-past>
+            <span>Show past</span>
+          </label>
+        </div>
+
+        <ol class="deadline-list" data-deadline-list></ol>
+        <p class="empty" data-deadline-empty hidden>No deadlines match this filter.</p>
+        <p class="fine-print">Dates tagged <span class="tag tag-verify">Confirm date</span> follow each program's usual yearly schedule — always double-check on the official site.</p>
+      </div>
+    </section>
+
+    <!-- FAFSA -->
+    <section class="section section-alt" id="fafsa">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Financial aid</p>
+          <h2>FAFSA</h2>
+          <p class="section-sub">The Free Application for Federal Student Aid unlocks federal, state, tribal and college aid. <strong>Most scholarships require it — do it first.</strong></p>
+        </div>
+
+        <div class="fafsa-grid">
+          <div class="card fafsa-steps">
+            <h3>How to file</h3>
+            <ol class="steps" data-fafsa-steps></ol>
+          </div>
+          <div class="fafsa-side">
+            <div class="card card-blue">
+              <h3>2027–28 FAFSA</h3>
+              <p>Open now for students starting college in fall 2027.</p>
+              <a class="btn btn-gold" data-fafsa-apply target="_blank" rel="noopener">Start the FAFSA</a>
+              <a class="btn btn-ghost-light" data-fafsa-fsaid target="_blank" rel="noopener">Create FSA ID</a>
+            </div>
+            <div class="card">
+              <h3>Can't file the FAFSA?</h3>
+              <p>Undocumented students in Minnesota may qualify for state aid through the <a data-fafsa-dream target="_blank" rel="noopener">MN Dream Act application</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHOLARSHIPS -->
+    <section class="section" id="scholarships">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Free money</p>
+          <h2>Scholarships</h2>
+          <p class="section-sub">Apply to as many as you qualify for — awards stack.</p>
+        </div>
+        <div class="scholarship-grid" data-scholarships></div>
+      </div>
+    </section>
+
+    <!-- UMN PROMISE -->
+    <section class="section section-blue" id="promise">
+      <div class="container">
+        <div class="section-head light">
+          <p class="eyebrow">Tuition covered</p>
+          <h2>UMN Native American Promise Tuition Program</h2>
+          <p class="section-sub">The University of Minnesota covers <strong>100% of tuition</strong> for eligible students who are citizens of one of Minnesota's 11 federally recognized Tribal Nations — including the Fond du Lac Band.</p>
+        </div>
+
+        <div class="promise-grid">
+          <div class="promise-card">
+            <h3>Who qualifies</h3>
+            <ul class="check-list">
+              <li>Citizen of one of Minnesota's 11 federally recognized Tribal Nations</li>
+              <li>Admitted to UMN Crookston, Duluth, Rochester, or Twin Cities</li>
+              <li>First-time, degree-seeking undergraduate (or transfer from a MN Tribal college)</li>
+              <li>Family income of $125,000 or less</li>
+              <li>Enrolled full-time (12+ credits; 15 recommended)</li>
+            </ul>
+          </div>
+          <div class="promise-card">
+            <h3>What it covers</h3>
+            <ul class="check-list">
+              <li>Full tuition for fall &amp; spring semesters</li>
+              <li>Up to 4 years for first-year students</li>
+              <li>Other grants &amp; scholarships apply first; Promise covers what's left</li>
+            </ul>
+            <p class="promise-note">Does not cover housing, fees, books, or summer courses — apply for other scholarships to help with those.</p>
+          </div>
+          <div class="promise-card">
+            <h3>How to get it</h3>
+            <ol class="steps steps-light">
+              <li>Apply for admission to a participating UMN campus</li>
+              <li>Complete the FAFSA (and renew every year)</li>
+              <li>Submit the American Indian Scholars Program application</li>
+              <li>Turn in the Tribal Affiliation form with proof of tribal citizenship</li>
+            </ol>
+            <p class="promise-note">Finish the FAFSA and Scholars application within 30 days of your first term starting.</p>
+          </div>
+        </div>
+        <div class="promise-actions">
+          <a class="btn btn-gold" href="https://www.umn.edu/native-american-promise-tuition-program" target="_blank" rel="noopener">Program details</a>
+          <a class="btn btn-ghost-light" href="https://z.umn.edu/AmericanIndianScholars" target="_blank" rel="noopener">American Indian Scholars application</a>
+        </div>
+        <p class="promise-note center">UMN Morris students are considered for the separate American Indian Tuition Waiver.</p>
+      </div>
+    </section>
+
+    <!-- COLLEGES -->
+    <section class="section" id="colleges">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Where to next</p>
+          <h2>College Applications</h2>
+          <p class="section-sub">Popular schools for FDL graduates. Many accept the <a href="https://www.commonapp.org" target="_blank" rel="noopener">Common App</a>. Ask your counselor about application fee waivers.</p>
+        </div>
+        <div class="college-grid" data-colleges></div>
+        <p class="fine-print"><span class="tag tag-promise">Promise</span> = eligible for the UMN Native American Promise Tuition Program.</p>
+      </div>
+    </section>
+
+    <!-- ESSAYS -->
+    <section class="section section-alt" id="essays">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Tell your story</p>
+          <h2>Application Essay Help</h2>
+          <p class="section-sub">Admissions and scholarship committees want to hear <em>your</em> voice. Here's how to make it shine.</p>
+        </div>
+        <div class="tips-grid" data-essay-tips></div>
+        <h3 class="sub-head">Helpful resources</h3>
+        <div class="resource-list" data-essay-resources></div>
+      </div>
+    </section>
+
+    <!-- QUOTES -->
+    <section class="section" id="quotes">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">In their words</p>
+          <h2>Senior Quotes</h2>
+        </div>
+        <div class="quote-search">
+          <label for="quote-filter" class="sr-only">Search senior quotes</label>
+          <input id="quote-filter" type="search" placeholder="Search by name or quote…" data-quote-filter>
+        </div>
+        <div class="quote-grid" data-quotes></div>
+        <p class="empty" data-quotes-empty hidden>No quotes match your search.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-brand"><span data-school-name>Fond du Lac Ojibwe School</span> · Class of <span data-class-year>2027</span></p>
+        <p data-contact-note></p>
+      </div>
+      <p class="footer-small">Information is provided as a guide. Always confirm dates and requirements with the official source.</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
