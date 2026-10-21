@@ -373,6 +373,36 @@
     );
   });
 
+  /* ---------- Tribal contacts ---------- */
+  function contactBlock(title, c) {
+    if (!c) return null;
+    return el("div", { class: "tribe-block" }, [
+      el("p", { class: "tribe-block-title", text: title }),
+      el("p", { class: "tribe-office", text: c.label }),
+      el("ul", { class: "tribe-lines" }, [
+        ...c.phones.map((ph) => el("li", {}, [
+          el("a", { href: `tel:${ph.replace(/\s*ext\.\s*/i, ",").replace(/[^\d,]/g, "")}`, text: ph }),
+        ])),
+        c.email ? el("li", {}, [el("a", { href: `mailto:${c.email}`, text: c.email })]) : null,
+      ]),
+      c.note ? el("p", { class: "tribe-note", text: c.note }) : null,
+      c.link ? externalLink(c.link, "Visit page →", "tribe-link") : null,
+    ]);
+  }
+  const tribeGrid = $("[data-tribes]");
+  (data.tribes || []).forEach((t) => {
+    tribeGrid.append(
+      el("article", { class: "card tribe" }, [
+        el("div", { class: "tribe-head" }, [
+          el("h3", { text: t.name }),
+          externalLink(t.site, t.site.replace(/^https?:\/\/(www\.)?/, ""), "tribe-site"),
+        ]),
+        contactBlock("Enrollment", t.enrollment),
+        contactBlock("Higher education & scholarships", t.education),
+      ])
+    );
+  });
+
   /* ---------- Colleges ---------- */
   const COLLEGE_GROUPS = [
     { region: "home", title: "Close to Home" },
