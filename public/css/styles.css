@@ -430,6 +430,8 @@ p { margin: 0; }
 .college-type { font-size: 0.78rem; font-weight: 600; color: var(--blue-600); }
 .college h3 { font-size: 1.1rem; margin-bottom: 0; }
 .college-loc { color: var(--ink-soft); font-size: 0.9rem; }
+.college-note { font-size: 0.82rem; font-weight: 600; color: var(--green); margin-top: 4px; }
+.college-group:first-child { margin-top: 0; }
 .college-deadline { font-size: 0.88rem; margin: 10px 0 12px; padding: 8px 10px; background: var(--gold-100); border-radius: 8px; }
 .college-deadline span { font-weight: 700; }
 .college-link { margin-top: auto; font-weight: 600; font-size: 0.92rem; text-decoration: none; }

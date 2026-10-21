@@ -374,20 +374,30 @@
   });
 
   /* ---------- Colleges ---------- */
-  const colGrid = $("[data-colleges]");
-  data.colleges.forEach((c) => {
-    colGrid.append(
-      el("article", { class: "card college" }, [
-        el("div", { class: "college-top" }, [
-          el("p", { class: "college-type", text: c.type }),
-          c.promise ? el("span", { class: "tag tag-promise", text: "Promise" }) : null,
-          c.waiver ? el("span", { class: "tag tag-promise", text: "Tuition Waiver" }) : null,
-        ]),
-        el("h3", { text: c.name }),
-        el("p", { class: "college-loc", text: c.location }),
-        el("p", { class: "college-deadline" }, [el("span", { text: "Deadlines: " }), c.deadline]),
-        externalLink(c.link, "Apply / learn more →", "college-link"),
-      ])
+  const COLLEGE_GROUPS = [
+    { region: "home", title: "Close to Home" },
+    { region: "national", title: "Across the Country" },
+  ];
+  const colWrap = $("[data-colleges]");
+  COLLEGE_GROUPS.forEach((g) => {
+    const schools = data.colleges.filter((c) => (c.region || "home") === g.region);
+    if (!schools.length) return;
+    colWrap.append(
+      el("h3", { class: "sub-head college-group", text: g.title }),
+      el("div", { class: "college-grid" }, schools.map((c) =>
+        el("article", { class: "card college" }, [
+          el("div", { class: "college-top" }, [
+            el("p", { class: "college-type", text: c.type }),
+            c.promise ? el("span", { class: "tag tag-promise", text: "Promise" }) : null,
+            c.waiver ? el("span", { class: "tag tag-promise", text: "Tuition Waiver" }) : null,
+          ]),
+          el("h3", { text: c.name }),
+          el("p", { class: "college-loc", text: c.location }),
+          c.note ? el("p", { class: "college-note", text: c.note }) : null,
+          el("p", { class: "college-deadline" }, [el("span", { text: "Deadlines: " }), c.deadline]),
+          externalLink(c.link, "Apply / learn more →", "college-link"),
+        ])
+      ))
     );
   });
 
