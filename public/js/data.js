@@ -647,7 +647,6 @@ window.SITE_DATA = {
       education: {
         label: "Fond du Lac Scholarship Office",
         phones: ["218-878-2681", "800-365-1613"],
-        email: "scholarships@fdlrez.com",
         link: "https://www.fdlband.org/community/scholarships/index.php",
       },
     },
