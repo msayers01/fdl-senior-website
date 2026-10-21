@@ -22,6 +22,7 @@ It's a plain static site (HTML, CSS, JavaScript) with no build step and no depen
 | Senior checklist items | `checklist` |
 | Letters of recommendation tips | `letters` |
 | Senior advisor contact card | `contact` (the card stays hidden until a name, email, phone, room or hours is filled in) |
+| Minnesota Chippewa Tribe contacts | `tribes` |
 | Ojibwe section headings | `ojibwe` (leave one blank to show the English label) |
 | "Last updated" date in the footer | `lastUpdated` |
 | School events (e.g. cap & gown orders) | add to `deadlines` with `category: "school"` (see the example in the file) |

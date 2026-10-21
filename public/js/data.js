@@ -605,6 +605,116 @@ window.SITE_DATA = {
   ],
 
   /*
+   * TRIBAL CONTACTS: Minnesota Chippewa Tribe (MCT) and its six member bands.
+   * Contacts come from each tribe's official website (checked Oct 2026).
+   * Phone numbers and emails change, so re-check them each school year.
+   */
+  tribes: [
+    {
+      name: "Minnesota Chippewa Tribe (MCT)",
+      site: "https://mnchippewatribe.org",
+      enrollment: {
+        label: "Tribal Operations (enrollment)",
+        phones: ["218-335-8581"],
+        email: "info@mnchippewatribe.org",
+        link: "https://mnchippewatribe.org/enrollment/",
+        note: "Enrollment for all six member bands is decided by the MCT Tribal Executive Committee, which meets quarterly.",
+      },
+    },
+    {
+      name: "Bois Forte Band",
+      site: "https://boisforte.com",
+      enrollment: {
+        label: "Enrollment Office",
+        phones: ["218-757-3261 ext. 1162"],
+        link: "https://boisforte.com/resources/enrollment/",
+      },
+      education: {
+        label: "Bois Forte Scholarship Program",
+        phones: ["218-757-3261", "800-221-8129"],
+        link: "https://boisforte.com/resources/assistance-services/scholarships/",
+      },
+    },
+    {
+      name: "Fond du Lac Band",
+      site: "https://www.fdlband.org",
+      enrollment: {
+        label: "Tribal Center",
+        phones: ["218-879-4593", "800-365-1613"],
+        link: "https://www.fdlband.org/explore/contact_us.php",
+        note: "No separate enrollment line is posted online. Call the Tribal Center and ask for Enrollment.",
+      },
+      education: {
+        label: "Fond du Lac Scholarship Office",
+        phones: ["218-878-2681", "800-365-1613"],
+        link: "https://www.fdlband.org/community/scholarships/index.php",
+      },
+    },
+    {
+      name: "Grand Portage Band",
+      site: "https://www.grandportageband.com",
+      enrollment: {
+        label: "Tribal Government",
+        phones: ["218-475-2277"],
+        link: "https://www.grandportageband.com/grand-portage-tribal-programs/",
+        note: "No separate enrollment line is posted online. Call the main office and ask for Enrollment.",
+      },
+      education: {
+        label: "Education & Scholarship Department",
+        phones: ["218-475-2812"],
+        email: "scholarship@grandportage.com",
+        link: "https://www.grandportageband.com/grand-portage-tribal-programs/",
+      },
+    },
+    {
+      name: "Leech Lake Band of Ojibwe",
+      site: "https://www.llojibwe.org",
+      enrollment: {
+        label: "Office of Tribal Enrollment",
+        phones: ["218-335-3601", "800-442-3909"],
+        link: "https://www.llojibwe.org/admin/enrollment.html",
+      },
+      education: {
+        label: "Post Secondary Grant Program",
+        phones: ["218-335-8253", "866-638-7738"],
+        link: "https://www.llojibwe.org/education/postsecondary.html",
+        note: "Apply for the Minnesota Indian Scholarship first, then mail in the Leech Lake grant application.",
+      },
+    },
+    {
+      name: "Mille Lacs Band of Ojibwe",
+      site: "https://millelacsband.com",
+      enrollment: {
+        label: "Enrollment Office",
+        phones: ["320-532-7730"],
+        link: "https://millelacsband.com/government/resources1/tribal-enrollments",
+      },
+      education: {
+        label: "Scholarship & Career Counseling",
+        phones: ["800-709-6445 ext. 4775"],
+        email: "MLB.Scholarships@millelacsband.com",
+        link: "https://millelacsband.com/government/resources1/scholarship",
+      },
+    },
+    {
+      name: "White Earth Nation",
+      site: "https://www.whiteearth.com",
+      enrollment: {
+        label: "Enrollment Office",
+        phones: ["800-710-4092"],
+        link: "https://www.whiteearth.com/divisions/enrollment-vital-statistics/enrollments",
+      },
+      education: {
+        label: "White Earth Scholarship Program",
+        phones: ["218-935-3515"],
+        email: "scholarship@whiteearth-nsn.gov",
+        link: "https://www.whiteearth.com/divisions/education/white-earth-student-financial-services",
+        note: "Priority deadline May 31. Mail the original signed application. Faxed or emailed copies aren't accepted.",
+      },
+    },
+  ],
+
+  /*
    * SENIOR QUOTES — add one entry per senior.
    * These are sample placeholders. Replace with real quotes (with the
    * student's permission) before sharing the site.
@@ -644,5 +754,6 @@ window.SITE_DATA = {
     checklist: "",
     fafsa: "",
     promise: "",
+    tribes: "",
   },
 };
