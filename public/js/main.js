@@ -43,6 +43,17 @@
   $$("[data-school-name]").forEach((n) => (n.textContent = data.school.name));
   document.title = `FDL Class of ${data.school.classYear}`;
 
+  /* ---------- Ojibwe headings ---------- */
+  const ojibwe = data.ojibwe || {};
+  $$("[data-ojibwe]").forEach((n) => {
+    const word = ojibwe[n.dataset.ojibwe];
+    if (!word) return;
+    n.textContent = word;
+    n.lang = "oj";
+    n.classList.add("is-ojibwe");
+    n.hidden = false;
+  });
+
   /* ---------- Graduation + countdown ---------- */
   const grad = data.graduation;
   const gradDate = parseDate(grad.datetime);
@@ -76,6 +87,84 @@
   }
   const timer = setInterval(tick, 1000);
   tick();
+
+  /* ---------- Calendar export ---------- */
+  const ymd = (d) => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
+  const nextDay = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1);
+
+  function calDetails(d) {
+    return [d.description, d.link].filter(Boolean).join("\n\n");
+  }
+
+  function googleCalUrl(d) {
+    const params = new URLSearchParams({
+      action: "TEMPLATE",
+      text: d.title,
+      dates: `${ymd(d.when)}/${ymd(nextDay(d.when))}`,
+      details: calDetails(d),
+    });
+    return `https://calendar.google.com/calendar/render?${params}`;
+  }
+
+  const icsEscape = (str) => String(str).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n");
+
+  // Fold lines longer than 75 characters, as the iCalendar format requires.
+  const icsFold = (line) => line.match(/.{1,74}/g).join("\r\n ");
+
+  function icsEvent(d, stamp) {
+    const uid = `${ymd(d.when)}-${d.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}@fdl-class-${data.school.classYear}`;
+    return [
+      "BEGIN:VEVENT",
+      `UID:${uid}`,
+      `DTSTAMP:${stamp}`,
+      `DTSTART;VALUE=DATE:${ymd(d.when)}`,
+      `DTEND;VALUE=DATE:${ymd(nextDay(d.when))}`,
+      `SUMMARY:${icsEscape(d.title)}`,
+      d.description || d.link ? `DESCRIPTION:${icsEscape(calDetails(d))}` : null,
+      d.link ? `URL:${d.link}` : null,
+      "END:VEVENT",
+    ].filter(Boolean).map(icsFold);
+  }
+
+  function downloadIcs(events, filename) {
+    const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+    const lines = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      `PRODID:-//FDL Class of ${data.school.classYear}//Senior Hub//EN`,
+      "CALSCALE:GREGORIAN",
+      ...events.flatMap((d) => icsEvent(d, stamp)),
+      "END:VCALENDAR",
+    ];
+    const blob = new Blob([lines.join("\r\n") + "\r\n"], { type: "text/calendar;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = el("a", { href: url, download: filename });
+    document.body.append(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  const slug = (str) => str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+  function calendarMenu(d) {
+    const ics = el("button", { type: "button", class: "cal-option" }, "Apple / Outlook (.ics)");
+    ics.addEventListener("click", () => downloadIcs([d], `${slug(d.title)}.ics`));
+    return el("details", { class: "cal" }, [
+      el("summary", { class: "cal-toggle" }, "Add to calendar"),
+      el("div", { class: "cal-menu" }, [
+        externalLink(googleCalUrl(d), "Google Calendar", "cal-option"),
+        ics,
+      ]),
+    ]);
+  }
+
+  // Close any open calendar menu when clicking elsewhere.
+  document.addEventListener("click", (e) => {
+    $$("details.cal[open]").forEach((menu) => {
+      if (!menu.contains(e.target)) menu.open = false;
+    });
+  });
 
   /* ---------- Deadlines ---------- */
   const CATEGORY_LABEL = { fafsa: "FAFSA", scholarship: "Scholarship", college: "College App", school: "School" };
@@ -135,7 +224,10 @@
         el("h3", { class: "deadline-title", text: d.title }),
         el("p", { class: "sr-only", text: fmtDate(d.when) }),
         d.description ? el("p", { class: "deadline-desc", text: d.description }) : null,
-        d.link ? externalLink(d.link, "Go to site →", "deadline-link") : null,
+        el("div", { class: "deadline-actions" }, [
+          d.link ? externalLink(d.link, "Go to site →", "deadline-link") : null,
+          st.days >= 0 ? calendarMenu(d) : null,
+        ]),
       ]),
       el("div", { class: `deadline-status status-${st.key}` }, [
         el("span", { class: "status-dot", "aria-hidden": "true" }),
@@ -190,8 +282,70 @@
     })
   );
   showPastEl.addEventListener("change", renderDeadlines);
+  $("[data-cal-all]").addEventListener("click", () => {
+    const upcoming = deadlines.filter((d) => status(d).days >= 0);
+    downloadIcs(upcoming, `fdl-class-of-${data.school.classYear}-deadlines.ics`);
+  });
   renderNextUp();
   renderDeadlines();
+
+  /* ---------- Checklist ---------- */
+  const CHECK_KEY = `fdl-class-${data.school.classYear}-checklist`;
+  function loadChecks() {
+    try {
+      return JSON.parse(localStorage.getItem(CHECK_KEY)) || {};
+    } catch (e) {
+      return {};
+    }
+  }
+  function saveChecks(checks) {
+    try {
+      localStorage.setItem(CHECK_KEY, JSON.stringify(checks));
+    } catch (e) {
+      /* Storage unavailable (e.g. private browsing): progress just isn't saved. */
+    }
+  }
+
+  const checks = loadChecks();
+  const checkGrid = $("[data-checklist]");
+  const checkboxes = [];
+  data.checklist.forEach((group) => {
+    checkGrid.append(
+      el("div", { class: "card check-group" }, [
+        el("h3", { text: group.group }),
+        el("ul", { class: "check-items" }, group.items.map((item) => {
+          const box = el("input", { type: "checkbox", id: `check-${item.id}` });
+          box.checked = Boolean(checks[item.id]);
+          box.addEventListener("change", () => {
+            if (box.checked) checks[item.id] = true;
+            else delete checks[item.id];
+            saveChecks(checks);
+            updateProgress();
+          });
+          checkboxes.push(box);
+          return el("li", {}, [box, el("label", { for: `check-${item.id}`, text: item.text })]);
+        })),
+      ])
+    );
+  });
+
+  function updateProgress() {
+    const done = checkboxes.filter((b) => b.checked).length;
+    const pct = checkboxes.length ? Math.round((done / checkboxes.length) * 100) : 0;
+    $("[data-check-count]").textContent = done;
+    $("[data-check-total]").textContent = checkboxes.length;
+    const bar = $("[data-check-bar]");
+    bar.setAttribute("aria-valuenow", String(pct));
+    bar.firstElementChild.style.width = `${pct}%`;
+  }
+  $("[data-check-reset]").addEventListener("click", () => {
+    if (!confirm("Clear all your check marks?")) return;
+    checkboxes.forEach((b) => (b.checked = false));
+    Object.keys(checks).forEach((k) => delete checks[k]);
+    saveChecks(checks);
+    updateProgress();
+  });
+  updateProgress();
 
   /* ---------- FAFSA ---------- */
   const f = data.fafsa;
@@ -251,6 +405,19 @@
   const resList = $("[data-essay-resources]");
   data.essay.resources.forEach((r) => resList.append(externalLink(r.link, r.name + " ↗", "resource")));
 
+  /* ---------- Letters of recommendation ---------- */
+  $("[data-letters-intro]").textContent = data.letters.intro;
+  const lettersGrid = $("[data-letters-tips]");
+  data.letters.tips.forEach((t, i) =>
+    lettersGrid.append(
+      el("div", { class: "tip" }, [
+        el("span", { class: "tip-num", text: String(i + 1).padStart(2, "0") }),
+        el("h3", { text: t.title }),
+        el("p", { text: t.body }),
+      ])
+    )
+  );
+
   /* ---------- Quotes ---------- */
   const quoteGrid = $("[data-quotes]");
   const quoteEmpty = $("[data-quotes-empty]");
@@ -277,8 +444,28 @@
     quoteEmpty.hidden = shown > 0;
   });
 
+  /* ---------- Contact card ---------- */
+  const contact = data.contact;
+  const contactRows = [
+    ["Email", contact.email && el("a", { href: `mailto:${contact.email}`, text: contact.email })],
+    ["Phone", contact.phone && el("a", { href: `tel:${contact.phone.replace(/[^\d+]/g, "")}`, text: contact.phone })],
+    ["Room", contact.room],
+    ["Office hours", contact.hours],
+  ].filter(([, v]) => v);
+  if (contact.name || contactRows.length) {
+    $("[data-contact-title]").textContent = contact.title || "Senior Advisor";
+    $("[data-contact-name]").textContent = contact.name || "";
+    const list = $("[data-contact-list]");
+    contactRows.forEach(([k, v]) => list.append(el("div", {}, [el("dt", { text: k }), el("dd", {}, [v])])));
+    $("#contact").hidden = false;
+  }
+
   /* ---------- Footer ---------- */
-  $("[data-contact-note]").textContent = data.contact.note;
+  $("[data-contact-note]").textContent = contact.note;
+  if (data.lastUpdated) {
+    const updated = parseDate(data.lastUpdated).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+    $("[data-last-updated]").textContent = `Last updated ${updated}`;
+  }
 
   /* ---------- Mobile nav ---------- */
   const toggle = $(".nav-toggle");

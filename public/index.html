@@ -6,6 +6,16 @@
   <title>FDL Class of 2027</title>
   <meta name="description" content="The all-in-one hub for Fond du Lac Ojibwe School seniors, families, and staff: graduation countdown, deadlines, FAFSA, scholarships, college applications, and senior quotes.">
   <meta name="theme-color" content="#0b3d91">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FDL Class of 2027">
+  <meta property="og:title" content="FDL Class of 2027">
+  <meta property="og:description" content="Graduation countdown, deadlines, FAFSA, scholarships, and college info for Fond du Lac Ojibwe School seniors and families.">
+  <meta property="og:url" content="https://fdl-senior-website.michaelsayers.workers.dev/">
+  <meta property="og:image" content="https://fdl-senior-website.michaelsayers.workers.dev/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="FDL Class of 2027 in gold on a blue background">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b3d91'/%3E%3Cpath d='M32 14 6 26l26 12 26-12z' fill='%23f2b705'/%3E%3Cpath d='M16 31v10c0 4 7 8 16 8s16-4 16-8V31l-16 7z' fill='%23f2b705'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,6 +37,7 @@
       </button>
       <nav id="site-nav" class="site-nav" aria-label="Main">
         <a href="#deadlines">Deadlines</a>
+        <a href="#checklist">Checklist</a>
         <a href="#fafsa">FAFSA</a>
         <a href="#scholarships">Scholarships</a>
         <a href="#promise">UMN Promise</a>
@@ -41,6 +52,7 @@
     <!-- HERO / COUNTDOWN -->
     <section class="hero" id="top">
       <div class="container hero-inner">
+        <p class="ojibwe-greet" data-ojibwe="hero" hidden></p>
         <p class="eyebrow" data-school-name>Fond du Lac Ojibwe School</p>
         <h1>Class of <span class="gold" data-class-year>2027</span></h1>
 
@@ -75,7 +87,7 @@
     <section class="section" id="deadlines">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Stay on track</p>
+          <p class="eyebrow" data-ojibwe="deadlines">Stay on track</p>
           <h2>Deadline Board</h2>
           <p class="section-sub">Every important date in one place. Sorted soonest first.</p>
         </div>
@@ -87,6 +99,7 @@
           <button class="chip" data-filter="fafsa" aria-pressed="false">FAFSA</button>
           <button class="chip" data-filter="scholarship" aria-pressed="false">Scholarships</button>
           <button class="chip" data-filter="college" aria-pressed="false">College Apps</button>
+          <button class="chip" data-filter="school" aria-pressed="false">School</button>
           <label class="toggle">
             <input type="checkbox" data-show-past>
             <span>Show past</span>
@@ -95,7 +108,27 @@
 
         <ol class="deadline-list" data-deadline-list></ol>
         <p class="empty" data-deadline-empty hidden>No deadlines match this filter.</p>
-        <p class="fine-print">Dates tagged <span class="tag tag-verify">Confirm date</span> follow each program's usual yearly schedule — always double-check on the official site.</p>
+        <div class="deadline-footer">
+          <p class="fine-print">Dates tagged <span class="tag tag-verify">Confirm date</span> follow each program's usual yearly schedule — always double-check on the official site.</p>
+          <button class="btn btn-blue btn-sm" type="button" data-cal-all>Add all upcoming to calendar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHECKLIST -->
+    <section class="section section-alt" id="checklist">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow" data-ojibwe="checklist">Your to-do list</p>
+          <h2>Senior Checklist</h2>
+          <p class="section-sub">Check things off as you go. Your progress is saved on this device only.</p>
+        </div>
+        <div class="checklist-progress">
+          <div class="progress-text"><strong data-check-count>0</strong> of <span data-check-total>0</span> done</div>
+          <div class="progress-track" role="progressbar" aria-label="Checklist progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-check-bar><span class="progress-fill"></span></div>
+          <button class="link-btn" type="button" data-check-reset>Reset</button>
+        </div>
+        <div class="checklist-grid" data-checklist></div>
       </div>
     </section>
 
@@ -103,7 +136,7 @@
     <section class="section section-alt" id="fafsa">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Financial aid</p>
+          <p class="eyebrow" data-ojibwe="fafsa">Financial aid</p>
           <h2>FAFSA</h2>
           <p class="section-sub">The Free Application for Federal Student Aid unlocks federal, state, tribal and college aid. <strong>Most scholarships require it — do it first.</strong></p>
         </div>
@@ -129,9 +162,16 @@
     <section class="section" id="scholarships">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Free money</p>
+          <p class="eyebrow" data-ojibwe="scholarships">Free money</p>
           <h2>Scholarships</h2>
           <p class="section-sub">Apply to as many as you qualify for — awards stack.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-icon" aria-hidden="true">!</span>
+          <div>
+            <p class="callout-title">Get your proof of tribal enrollment now</p>
+            <p>The UMN Promise, Minnesota Indian Scholarship, Cobell, and American Indian College Fund all ask for proof of tribal enrollment or descendancy. Request it from your tribe's enrollment office early — it can take a few weeks.</p>
+          </div>
         </div>
         <div class="scholarship-grid" data-scholarships></div>
       </div>
@@ -141,7 +181,7 @@
     <section class="section section-blue" id="promise">
       <div class="container">
         <div class="section-head light">
-          <p class="eyebrow">Tuition covered</p>
+          <p class="eyebrow" data-ojibwe="promise">Tuition covered</p>
           <h2>UMN Native American Promise Tuition Program</h2>
           <p class="section-sub">The University of Minnesota covers <strong>100% of tuition</strong> for eligible students who are citizens of one of Minnesota's 11 federally recognized Tribal Nations — including the Fond du Lac Band.</p>
         </div>
@@ -189,7 +229,7 @@
     <section class="section" id="colleges">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Where to next</p>
+          <p class="eyebrow" data-ojibwe="colleges">Where to next</p>
           <h2>College Applications</h2>
           <p class="section-sub">Popular schools for FDL graduates. Many accept the <a href="https://www.commonapp.org" target="_blank" rel="noopener">Common App</a>. Ask your counselor about application fee waivers.</p>
         </div>
@@ -202,13 +242,19 @@
     <section class="section section-alt" id="essays">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Tell your story</p>
+          <p class="eyebrow" data-ojibwe="essays">Tell your story</p>
           <h2>Application Essay Help</h2>
           <p class="section-sub">Admissions and scholarship committees want to hear <em>your</em> voice. Here's how to make it shine.</p>
         </div>
         <div class="tips-grid" data-essay-tips></div>
         <h3 class="sub-head">Helpful resources</h3>
         <div class="resource-list" data-essay-resources></div>
+
+        <div class="letters">
+          <h3 class="sub-head">Letters of Recommendation</h3>
+          <p class="letters-intro" data-letters-intro></p>
+          <div class="tips-grid" data-letters-tips></div>
+        </div>
       </div>
     </section>
 
@@ -216,7 +262,7 @@
     <section class="section" id="quotes">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">In their words</p>
+          <p class="eyebrow" data-ojibwe="quotes">In their words</p>
           <h2>Senior Quotes</h2>
         </div>
         <div class="quote-search">
@@ -227,6 +273,20 @@
         <p class="empty" data-quotes-empty hidden>No quotes match your search.</p>
       </div>
     </section>
+
+    <!-- CONTACT -->
+    <section class="section section-alt" id="contact" hidden>
+      <div class="container">
+        <div class="contact-card">
+          <div>
+            <p class="eyebrow">Questions?</p>
+            <h2 data-contact-title>Senior Advisor</h2>
+            <p class="contact-name" data-contact-name></p>
+          </div>
+          <dl class="contact-list" data-contact-list></dl>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -235,6 +295,7 @@
         <p class="footer-brand"><span data-school-name>Fond du Lac Ojibwe School</span> · Class of <span data-class-year>2027</span></p>
         <p data-contact-note></p>
       </div>
+      <p class="footer-updated" data-last-updated></p>
     </div>
   </footer>
 

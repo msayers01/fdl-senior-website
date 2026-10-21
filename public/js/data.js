@@ -36,6 +36,18 @@ window.SITE_DATA = {
    *  opens:    optional date the application opens
    *  date:     the deadline itself
    */
+  /*
+   *  SCHOOL EVENTS: add senior events here with category: "school" once the
+   *  school confirms them (e.g. cap & gown order deadline, senior pictures).
+   *  They show up under the "School" filter. Example:
+   *
+   *    {
+   *      title: "Cap & gown order deadline",
+   *      category: "school",
+   *      date: "2027-02-01T23:59",
+   *      description: "Order through the senior advisor.",
+   *    },
+   */
   deadlines: [
     {
       title: "2027–28 FAFSA is open",
@@ -284,6 +296,67 @@ window.SITE_DATA = {
     ],
   },
 
+  letters: {
+    intro: "Most colleges and many scholarships ask for 1–3 letters of recommendation.",
+    tips: [
+      { title: "Ask the right people", body: "Pick teachers, coaches, employers or community members who know you well and can share specific examples." },
+      { title: "Ask early", body: "Give them at least 3–4 weeks before the deadline. Asking in person first is a nice touch." },
+      { title: "Make it easy", body: "Share a short résumé or brag sheet, the deadline, what the letter is for, and how to submit it." },
+      { title: "Follow up & say thanks", body: "Send a friendly reminder a week before the deadline, then a thank-you note once it's in." },
+    ],
+  },
+
+  /*
+   * SENIOR CHECKLIST: students' check marks are saved in their own browser.
+   * Each `id` must stay unique and should not change once published, or
+   * students lose that check mark.
+   */
+  checklist: [
+    {
+      group: "Financial aid",
+      items: [
+        { id: "fsa-id", text: "Create my StudentAid.gov account (FSA ID)" },
+        { id: "parent-fsa-id", text: "Parent/contributor creates their FSA ID" },
+        { id: "fafsa", text: "Submit the 2027–28 FAFSA" },
+        { id: "fafsa-summary", text: "Review my FAFSA Submission Summary" },
+      ],
+    },
+    {
+      group: "Tribal enrollment",
+      items: [
+        { id: "enrollment", text: "Request proof of tribal enrollment from my tribe's enrollment office" },
+      ],
+    },
+    {
+      group: "College applications",
+      items: [
+        { id: "college-list", text: "Make my list of colleges" },
+        { id: "essay", text: "Write my personal essay" },
+        { id: "letters", text: "Ask for letters of recommendation" },
+        { id: "transcripts", text: "Request transcripts be sent" },
+        { id: "applications", text: "Submit my college applications" },
+        { id: "umn-scholars", text: "Submit the UMN American Indian Scholars application (if applying to UMN)" },
+      ],
+    },
+    {
+      group: "Scholarships",
+      items: [
+        { id: "misp", text: "Minnesota Indian Scholarship" },
+        { id: "cobell", text: "Cobell Scholarship" },
+        { id: "aicf", text: "American Indian College Fund — Full Circle" },
+        { id: "fdl-band", text: "Fond du Lac Band Higher Education" },
+      ],
+    },
+    {
+      group: "After acceptance",
+      items: [
+        { id: "compare-aid", text: "Compare financial aid offers" },
+        { id: "commit", text: "Accept my offer and confirm enrollment" },
+        { id: "final-transcript", text: "Send my final transcript after graduation" },
+      ],
+    },
+  ],
+
   /*
    * SENIOR QUOTES — add one entry per senior.
    * These are sample placeholders. Replace with real quotes (with the
@@ -297,5 +370,32 @@ window.SITE_DATA = {
 
   contact: {
     note: "Questions? Contact senior advisor",
+    // Fill these in to show a contact card. Leave any blank ("") to hide it.
+    title: "Senior Advisor",
+    name: "",
+    email: "",
+    phone: "",
+    room: "",
+    hours: "",
+  },
+
+  // Shown in the footer. Update whenever you change this file.
+  lastUpdated: "2026-10-21",
+
+  /*
+   * OJIBWE SECTION HEADINGS: shown above each English heading.
+   * Please have FDL's Ojibwe language staff review these before relying on
+   * them. Leave a section blank ("") to show the English label instead.
+   */
+  ojibwe: {
+    hero: "Boozhoo!",          // Hello / greetings
+    scholarships: "Zhooniyaa", // money
+    colleges: "Gabe-gikendaasoowigamig", // college / university
+    essays: "Ozhibii'igewin",  // writing
+    quotes: "Ikidowinan",      // words
+    deadlines: "",
+    checklist: "",
+    fafsa: "",
+    promise: "",
   },
 };
